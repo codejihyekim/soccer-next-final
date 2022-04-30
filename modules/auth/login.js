@@ -63,11 +63,7 @@ function* logout(){
         yield put({type: LOGOUT_FAILURE});
     }
 }
-const logoutAPI = () => axios.get(
-    `${SERVER}/user/logout`,
-    {},
-    {headers}
-)
+const logoutAPI = () => axios.get(`${SERVER}/user/logout`,{},{headers})
     
 const login = handleActions({
     [HYDRATE]: (state, action) => ({

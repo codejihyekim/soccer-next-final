@@ -1,64 +1,111 @@
-import Router from "next/router";
-import tableStyles from '../common/styles/table.module.css'
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import styles from '../../styles/Profile.module.css';
 
-export default function Profile(){
-   
+
+function Copyright(props) {
     return (
-        <html>
-        <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        </head>
-        <body>
+        <Typography variant="body2" color="text.secondary" align="center" {...props}>
+            {'Copyright © '}
+            <Link color="inherit" href="https://mui.com/">
+                Your Website
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
 
-        <div class="about-section">
-        <h1>About Us Page</h1>
-        <p>Some text about who we are and what we do.</p>
-        <p>Resize the browser window to see that this page is responsive by the way.</p>
-        </div>
+const theme = createTheme();
 
-        <h2 style="text-align:center">Our Team</h2>
-        <div class="row">
-        <div class="column">
-            <div class="card">
-            <img src="/w3images/team1.jpg" alt="Jane" style="width:100%"/>
-            <div class="container">
-                <h2>Jane Doe</h2>
-                <p class="title">CEO & Founder</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>jane@example.com</p>
-                <p><button class="button">Contact</button></p>
-            </div>
-            </div>
-        </div>
+export function Profile({loginUser}) {
+    
+    return (
+        <ThemeProvider theme={theme}>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline/>
+                <Box
+                    sx={{
+                        marginTop: 2,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                    }}>
+                    <Avatar
+                        sx={{
+                            m: 1,
+                            bgcolor: 'secondary.main'
+                        }}>
+                        <LockOutlinedIcon/>
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                    {loginUser.name}프로필 
+                    </Typography>
+                    <Box
+                        component="form"
+                        noValidate="noValidate"
+                        sx={{
+                            mt: 1
+                        }}
+                       >
+                        <h2
+                            style={{
+                                textAlign: "center"
+                            }}>User Profile Card</h2>
 
-        <div class="column">
-            <div class="card">
-            <img src="/w3images/team2.jpg" alt="Mike" style="width:100%"/>
-            <div class="container">
-                <h2>Mike Ross</h2>
-                <p class="title">Art Director</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>mike@example.com</p>
-                <p><button class="button">Contact</button></p>
-            </div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="card">
-            <img src="/w3images/team3.jpg" alt="John" style="width:100%"/>
-            <div class="container">
-                <h2>John Doe</h2>
-                <p class="title">Designer</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>john@example.com</p>
-                <p><button class="button">Contact</button></p>
-            </div>
-            </div>
-        </div>
-        </div>
-        </body>
-        </html>
-    )
-        
+                        <div className="styles.card">
+                            <img
+                                src="https://www.w3schools.com/w3images/team2.jpg"
+                                alt="John"
+                                style={{
+                                    width: "100%"
+                                }}/>
+                            <h1>
+                                ?
+                            </h1>
+                            <p className="title">CEO & Founder, Example</p>
+                            <p>Harvard University</p>
+                            <div
+                                style={{
+                                    margin: "24px 0"
+                                }}>
+                                <a href="#">
+                                    <i className="styles.fa styles.fa-dribbble"></i>
+                                </a>
+                                <a href="#">
+                                    <i className="styles.fa styles.fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i className="styles.fa styles.fa-linkedin"></i>
+                                </a>
+                                <a href="#">
+                                    <i className="styles.fa styles.fa-facebook"></i>
+                                </a>
+                            </div>
+                            <p>
+                                <button>Contact</button>
+                            </p>
+                        </div>
+                    </Box>
+                </Box>
+                <Copyright
+                    sx={{
+                        mt: 8,
+                        mb: 4
+                    }}/>
+            </Container>
+        </ThemeProvider>
+    );
 }

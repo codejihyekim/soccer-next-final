@@ -78,7 +78,7 @@ export function Nav() {
                 subTitles: [
                     "프로필", "정보수정", "회원탈퇴"
                 ],
-                urls: ["/auth/profile", "/auth/modifyUser", "/auth/delUser"]
+                urls: ["/user/profile", "/auth/modifyUser", "/auth/delUser"]
             })
             setImageInfos(
                 {imageUrl: 'https://www.w3schools.com/howto/img_avatar.png', imageTitle: 'users'}
