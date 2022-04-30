@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { increaseAsync, decreaseAsync } from '@/modules/basic/counser';
+import { increaseAsync, decreaseAsync } from '@/modules/basic/counter';
 import { Counter } from '@/components/basic/Counter';
 
 const CounterPage = ({ number, increaseAsync, decreaseAsync }) => {
