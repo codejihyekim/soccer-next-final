@@ -43,8 +43,11 @@ function* loging(action){
         const response = yield call(loginAPI, action.payload)
         console.log(" 로그인 서버 다녀옴 "+JSON.stringify(response.data))
         const result = response.data
+        const loginUser = JSON.stringify(result)
+        localStorage.setItem("loginUser",loginUser)
         yield put({type:LOGIN_SUCCESS, payload: result})
         yield put({type:SAVE_TOKEN, payload: result.token})
+        yield put(window.location.href="/")
     }catch(error){
         yield put({type:LOGIN_FAILURE, payload: error.message })
     }
@@ -53,7 +56,8 @@ function* loging(action){
 const loginAPI = payload => axios.post(
     `${SERVER}/user/login`,
     payload,
-    {headers}
+    {headers},
+   
 )
 
 export function* logoutSaga(){

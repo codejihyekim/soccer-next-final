@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import { Login } from '@/components/auth/Login';
 import { useDispatch } from 'react-redux';
-import { loginRequest, logoutRequest, loginCancelled} from '@/modules/auth/login'
+import { loginRequest, logoutRequest} from '@/modules/auth/login'
 
 const LoginPage = () => {
       const [login, setLogin] =useState({
@@ -25,6 +25,6 @@ const LoginPage = () => {
 };
 
 const mapStateToProps = state => ({isLoggined: state.login.isLoggined})
-const loginActions = {loginRequest, loginCancelled, logoutRequest}
+const loginActions = {loginRequest,  logoutRequest}
 export default connect(mapStateToProps, loginActions)(LoginPage)
 

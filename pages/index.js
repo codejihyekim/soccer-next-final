@@ -8,10 +8,11 @@ import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import React, {useEffect} from 'react';
 import tableStyles from '@/styles/Table.module.css'
+import axios from 'axios'
 
 export default function Home() {
   useEffect(() => {
-    const loginUser = localStorage.getItem("loginUser")
+    const loginUser = localStorage.getItem('loginUser')
     const user = JSON.parse(loginUser)
     if (loginUser === null) {
         axios
@@ -40,7 +41,7 @@ export default function Home() {
             <tbody>
                 <tr >
                     <td>
-                        <div id="timeZone">현재시간</div>
+                        <div id="timeZone"></div>
                     </td>
                 </tr>
             </tbody>
