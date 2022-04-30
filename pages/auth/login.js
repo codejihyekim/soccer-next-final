@@ -25,6 +25,6 @@ const LoginPage = () => {
 };
 
 const mapStateToProps = state => ({isLoggined: state.login.isLoggined})
-const loginActions = {loginRequest,  logoutRequest}
+const loginActions = {loginRequest, logoutRequest}
 export default connect(mapStateToProps, loginActions)(LoginPage)
 

@@ -52,7 +52,7 @@ export function Nav() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    const handleLogout = (e) => {
+    const handleLogout = e => {
         e.preventDefault()
         dispatch(logoutRequest());
     }
