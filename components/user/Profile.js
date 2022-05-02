@@ -65,7 +65,7 @@ export function Profile({loginUser}) {
                                 textAlign: "center"
                             }}>User Profile Card</h2>
 
-                        <div className="styles.card">
+                        <div className={styles.card}>
                             <img
                                 src="https://www.w3schools.com/w3images/team2.jpg"
                                 alt="John"
@@ -75,7 +75,7 @@ export function Profile({loginUser}) {
                             <h1>
                                 ?
                             </h1>
-                            <p className="title">CEO & Founder, Example</p>
+                            <p className={styles.title}>CEO & Founder, Example</p>
                             <p>Harvard University</p>
                             <div
                                 style={{
