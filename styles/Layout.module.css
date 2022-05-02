@@ -2,9 +2,9 @@
     padding: 0 2rem;
     width: 900px;
     margin: 0 auto;
-  }
-  
-  .main {
+}
+
+.main {
     width: 900px;
     min-height: 600px;
     padding: 0.2rem 0;
@@ -12,9 +12,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .footer {
+}
+
+.footer {
     width: 900px;
     display: flex;
     flex: 1;
@@ -22,11 +22,11 @@
     border-top: 1px solid #eaeaea;
     justify-content: center;
     align-items: center;
-  }
-  
-  .footer a {
+}
+
+.footer a {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-  }
+}

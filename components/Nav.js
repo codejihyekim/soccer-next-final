@@ -13,6 +13,9 @@ import MenuItem from '@mui/material/MenuItem';
 import {createSvgIcon} from '@mui/material/utils';
 import { logoutRequest } from '@/modules/auth/login';
 import {useDispatch, connect} from 'react-redux';
+import { useSelector } from 'react-redux';
+
+
 const HomeIcon = createSvgIcon(
     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>,
     'Home',
@@ -20,13 +23,14 @@ const HomeIcon = createSvgIcon(
 
 const basicSettings = {
     subTitles: [
-        '멤버관리'
+        '카운터', '계산기', 'BMI', '게시판'
     ],
-    urls: ["/employee/list"]
+    urls: ["/basic/counter", "/basic/calc", "/basic/bmi", '/board/list']
 };
 
 export function Nav() {
-    const [loginCheck, setLoginCheck] = useState(false)
+    const {loginUser} = useSelector(state => state.login)
+
     const dispatch = useDispatch()
     const [imageInfos, setImageInfos] = useState({
         imageUrl: 'https://as2.ftcdn.net/v2/jpg/01/85/61/65/1000_F_185616556_uCc1J5d5GNfRH6ErgP1G' +
@@ -52,15 +56,14 @@ export function Nav() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    const handleLogout = e => {
-        e.preventDefault()
+    const handleLogout = () => {
+        alert(' 로그아웃 클릭 ')
         dispatch(logoutRequest());
     }
 
     useEffect(() => {
-        const loginUser = localStorage.getItem("loginUser")
-        if(loginUser) setLoginCheck(false)
-        if (loginUser == null) {
+      console.log(' 모듈에 저장된 로그인값: '+JSON.stringify(loginUser))
+        if (loginUser === null) {
             setUserUrls({
                 subTitles: [
                     '회원가입', '로그인'
@@ -73,18 +76,17 @@ export function Nav() {
                 imageTitle: 'sign'
             })
         } else {
-          setLoginCheck(true)
             setUserUrls({
                 subTitles: [
                     "프로필", "정보수정", "회원탈퇴"
                 ],
-                urls: ["/user/profile", "/auth/modifyUser", "/auth/delUser"]
+                urls: ["/user/profile", "/user/modifyUser", "/auth/delUser"]
             })
             setImageInfos(
                 {imageUrl: 'https://www.w3schools.com/howto/img_avatar.png', imageTitle: 'users'}
             )
         }
-    }, [])
+    }, [loginUser && loginUser.name])
 
     return (
         <AppBar
@@ -196,7 +198,7 @@ export function Nav() {
                             }
                         </Menu>
                     </Box>
-                    {loginCheck&&<Box >
+                    {loginUser && <Box >
                         <Button
                             onClick={handleLogout}
                             sx={{

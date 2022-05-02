@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import styles from '../../styles/Profile.module.css';
+import styles from '@/styles/Profile.module.css';
 
 
 function Copyright(props) {
@@ -51,7 +51,7 @@ export function Profile({loginUser}) {
                         <LockOutlinedIcon/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                    {loginUser.name}프로필 
+                    User Profile Card
                     </Typography>
                     <Box
                         component="form"
@@ -63,7 +63,7 @@ export function Profile({loginUser}) {
                         <h2
                             style={{
                                 textAlign: "center"
-                            }}>User Profile Card</h2>
+                            }}> </h2>
 
                         <div className={styles.card}>
                             <img
@@ -73,10 +73,13 @@ export function Profile({loginUser}) {
                                     width: "100%"
                                 }}/>
                             <h1>
-                                ?
+                            {loginUser.name}
                             </h1>
                             <p className={styles.title}>CEO & Founder, Example</p>
-                            <p>Harvard University</p>
+                            <p>이메일 : {loginUser.email}</p>
+                            <p>전화번호 : {loginUser.phone}</p>
+                            <p>생년월일 : {loginUser.birth}</p>
+                            <p>주소 : {loginUser.address}</p>
                             <div
                                 style={{
                                     margin: "24px 0"

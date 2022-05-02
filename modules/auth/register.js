@@ -3,7 +3,6 @@ import {call, delay, put, takeLatest, select, throttle} from 'redux-saga/effects
 import {HYDRATE} from "next-redux-wrapper"
 import axios from 'axios'
 
-
 const SERVER = 'http://127.0.0.1:5000'
 const headers = {
     "Content-Type": "application/json",
@@ -22,43 +21,48 @@ const UNREGISTER_FAILURE = 'auth/UNREGISTER_FAILURE';
 
 export const registerRequest = createAction(REGISTER_REQUEST, data => data)
 export const unregisterRequest = createAction(UNREGISTER_REQUEST, data => data)
-
+//위 아래 동일한 코드임.
+// export const registerRequest = data => (
+//     {type: REGISTER_REQUEST, payload: data}
+// )
 export function* registerSaga() {
     yield takeLatest(REGISTER_REQUEST, signup);
     yield takeLatest(UNREGISTER_REQUEST, membershipWithdrawal);
 }
-
 function* signup(action) {
     try {
         const response = yield call(registerAPI, action.payload)
         console.log(" 회원가입 서버다녀옴: " + JSON.stringify(response.data))
         yield put({type: REGISTER_SUCCESS, payload: response.data})
-        yield put(window.location.href="/auth/login")
+        //put이니까 리덕스에 데이터 보내라.
+        yield put(window.location.href = "/auth/login")
     } catch (error) {
         yield put({type: REGISTER_FAILURE, payload: error.message})
     }
 }
-const registerAPI = payload => axios.post(
-    `${SERVER}/user/join`,
-    payload,
-    {headers}
-)
+const registerAPI = payload => axios.post(`${SERVER}/user/join`, payload, {headers})
 
-function* membershipWithdrawal(){
-    try{
-        console.log('### 회원탈퇴 ###')
-    }catch(error){
-        
+function* membershipWithdrawal(action) {
+    try {
+        console.log(`회원탈퇴`)
+        // const response = yield call(userRegisterAPI, action.payload)
+        // console.log(" 회원탈퇴 서버다녀옴: " + JSON.stringify(response.data))
+        // yield put({type: REGISTER_SUCCESS, payload: response.data})
+    } catch (error) {
+        // yield put({type: REGISTER_FAILURE, payload: error.message})
     }
 }
 
 const register = handleActions({
-    [HYDRATE] : (state, action) => ({
-        ...state, ...action.payload
-    })
-}, initialState)
+    [HYDRATE]: (state, action) => 
+    ({...state, ...action.payload})}, 
+    initialState
+)
+export default register
+    //[name] 과 같은거임 (동적 키 할당)
 
-/** handleActions를 사용하기 전 학습용 백업
+
+/* handleActions 를 사용하기 전 학습용 백업
 const auth = (state = initialState, action) => {
     switch (action.type) {
         case HYDRATE:
@@ -68,7 +72,7 @@ const auth = (state = initialState, action) => {
                 ...action.payload
             }
         case REGISTER_SUCCESS:
-            console.log(' ### 회원가입 성공 ### ' + action.payload)
+            console.log(' ### 회원가입 성공 ### ' + JSON.stringify(action.payload))
             return {
                 ...state,
                 user: action.payload
@@ -83,5 +87,5 @@ const auth = (state = initialState, action) => {
             return state;
     }
 }
-*/
-export default register
+
+export default auth*/
