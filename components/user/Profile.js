@@ -14,7 +14,6 @@ import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import styles from '@/styles/Profile.module.css';
 
-
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -65,7 +64,7 @@ export function Profile({loginUser}) {
                                 textAlign: "center"
                             }}> </h2>
 
-                        <div className={styles.card}>
+                        <div className="styles.card">
                             <img
                                 src="https://www.w3schools.com/w3images/team2.jpg"
                                 alt="John"
@@ -75,7 +74,7 @@ export function Profile({loginUser}) {
                             <h1>
                             {loginUser.name}
                             </h1>
-                            <p className={styles.title}>CEO & Founder, Example</p>
+                            <p className="title">CEO & Founder, Example</p>
                             <p>이메일 : {loginUser.email}</p>
                             <p>전화번호 : {loginUser.phone}</p>
                             <p>생년월일 : {loginUser.birth}</p>

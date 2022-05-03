@@ -4,6 +4,7 @@ import createMiddleware from "redux-saga"
 import { composeWithDevTools} from "redux-devtools-extension"
 import rootReducer, {rootSaga} from "@/modules"
 
+
 const sagaMiddleware = createMiddleware()
 
 const store = createStore(

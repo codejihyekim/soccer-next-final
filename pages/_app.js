@@ -1,19 +1,21 @@
+import React from "react";
+import PropTypes from "prop-types";
 import '@/styles/globals.css'
-import { Nav, Header, Layout, Footer} from '@/components'
-import { wrapper } from '@/modules/store.js'
-import styles from "@/styles/Header.module.css";
+import {Footer, Header, Nav} from "@/components";
+import {wrapper} from "@/modules/store";
+import withReduxSaga from 'next-redux-saga';
 
-
-const App = ({ Component, pageProps }) => {
-  return (<div>
-    <Nav/>
-      <Header className={styles.header}/>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-      <Footer/>
-      </div>
-    )
+const App = ({ Component  }) => {
+  return  <>
+   <Header/>
+  <Nav/><div className='AppMinHeight'>
+  <Component />
+  </div>
+  <Footer/>
+  </>
 }
+App.propTypes = {
+  Component: PropTypes.elementType,
+};
 
-export default wrapper.withRedux(App)
+export default wrapper.withRedux(withReduxSaga(App));

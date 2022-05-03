@@ -11,7 +11,7 @@ export function Header() {
       initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
             <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
             <title>Soccer App</title>
-           
+          
         </Head>
     )
 }
