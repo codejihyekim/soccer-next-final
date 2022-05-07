@@ -23,9 +23,9 @@ const HomeIcon = createSvgIcon(
 
 const basicSettings = {
     subTitles: [
-        '카운터', '계산기', 'BMI', '게시판'
+        '카운터', '게시판'
     ],
-    urls: ["/basic/counter", "/basic/calc", "/basic/bmi", '/board/list']
+    urls: ["/basic/counter", '/board/list']
 };
 
 export function Nav() {
@@ -95,10 +95,10 @@ export function Nav() {
                 marginBottom: "20px"
             }}>
             <Container maxWidth="xl">
-                <Toolbar disableGutters="disableGutters">
+                <Toolbar disableGutters={true}>
                     <Typography
                         variant="h6"
-                        noWrap="noWrap"
+                        noWrap={true}
                         component="div"
                         sx={{
                             mr: 2,
@@ -179,7 +179,7 @@ export function Nav() {
                                 vertical: 'top',
                                 horizontal: 'right'
                             }}
-                            keepMounted="keepMounted"
+                            keepMounted={true}
                             transformOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right'
