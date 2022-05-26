@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
+import Head from 'next/head';
 
 function Copyright(props) {
     return (
@@ -28,7 +29,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export function Login({onChange, onSubmit}) {
+export function BoardRegister({onChange, onSubmit}) {
     
     return (
         <ThemeProvider theme={theme}>
@@ -41,15 +42,9 @@ export function Login({onChange, onSubmit}) {
                         flexDirection: 'column',
                         alignItems: 'center'
                     }}>
-                    <Avatar
-                        sx={{
-                            m: 1,
-                            bgcolor: 'secondary.main'
-                        }}>
-                        <LockOutlinedIcon/>
-                    </Avatar>
+                    
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        게시판 등록
                     </Typography>
                     <Box
                         component="form"
@@ -62,25 +57,22 @@ export function Login({onChange, onSubmit}) {
                             margin="normal"
                             required
                             fullWidth
-                            id="username"
-                            label="사용자 아이디"
-                            name="username"
-                            autoComplete="username"
+                            id="date"
+                            label="날짜"
+                            name="date"
+                            autoComplete="date"
                             autoFocus
                             onChange={onChange}/>
                         <TextField
                             margin="normal"
                             required
                             fullWidth
-                            name="password"
-                            label="비밀번호"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
+                            name="title"
+                            label="제목"
+                            type="title"
+                            id="title"
+                            autoComplete="title"
                             onChange={onChange}/>
-                        <FormControlLabel
-                            control={<Checkbox value = "remember" color = "primary" />}
-                            label="Remember me"/>
                         <Button
                             type="submit"
                             fullWidth 
@@ -89,20 +81,9 @@ export function Login({onChange, onSubmit}) {
                                 mt: 3,
                                 mb: 2
                             }}>
-                            Sign In
+                            등록
                         </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="/auth/register" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
+                        
                     </Box>
                 </Box>
                 <Copyright

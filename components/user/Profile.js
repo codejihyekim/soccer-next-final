@@ -64,9 +64,9 @@ export function Profile({loginUser}) {
                                 textAlign: "center"
                             }}> </h2>
 
-                        <div className="styles.card">
+                        <div className={styles.card}>
                             <img
-                                src="https://www.w3schools.com/w3images/team2.jpg"
+                                src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA3MjhfOTQg%2FMDAxNjI3NDY3NTk1MDcz.-ty4PGw6-XRpAOxqT6sHsgHTy_klN1LBEFyNRIW5Q_0g.39hHyZs1vSKc24LzXwrrmJAOoCbqMKgn4qNy3iMuWqgg.JPEG.good9171%2FIMG_1791.JPG&type=sc960_832"
                                 alt="John"
                                 style={{
                                     width: "100%"
@@ -74,7 +74,7 @@ export function Profile({loginUser}) {
                             <h1>
                             {loginUser.name}
                             </h1>
-                            <p className="title">CEO & Founder, Example</p>
+                            <p className={styles.title}>CEO & Founder, Example</p>
                             <p>이메일 : {loginUser.email}</p>
                             <p>전화번호 : {loginUser.phone}</p>
                             <p>생년월일 : {loginUser.birth}</p>

@@ -25,7 +25,7 @@ const basicSettings = {
     subTitles: [
         '카운터', '게시판'
     ],
-    urls: ["/basic/counter", '/board/list']
+    urls: ["/basic/counter", '/board/register']
 };
 
 export function Nav() {
@@ -123,39 +123,37 @@ export function Nav() {
                         </Box>
                     </Typography>
 
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            color: 'white',
-                            display: {
-                                xs: 'none',
-                                md: 'flex'
-                            }
-                        }}>
-                        {
-                            basicSettings
-                                .urls
-                                .map((urls, i) => (
-                                    <a
-                                        href={urls}
-                                        key={i}
-                                        style={{
-                                            textDecoration: 'none'
-                                        }}>
-                                        <Button
-                                            key={i}
-                                            onClick={handleCloseNavMenu}
-                                            sx={{
-                                                my: 2,
-                                                color: 'white',
-                                                display: 'block'
-                                            }}>
-                                            {basicSettings.subTitles[i]}
-                                        </Button>
-                                    </a>
-                                ))
-                        }
-                    </Box>
+                    <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenNavMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+            >
+              {basicSettings.urls.map((urls, i) => (
+                <MenuItem key={i} onClick={handleCloseNavMenu}>
+                <a href={urls}>
+                  <Typography textAlign="center">{basicSettings.subTitles[i]}</Typography>
+                </a>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
 
                     <Box sx={{
                             flexGrow: 0

@@ -11,7 +11,7 @@ import {HYDRATE} from "next-redux-wrapper"
 import axios from 'axios'
 
 
-const SERVER = 'http://127.0.0.1:5000'
+const SERVER = 'http://127.0.0.1:8080'
 const headers = {
     "Content-Type": "application/json",
     Authorization: "JWT fefege...",
@@ -48,17 +48,20 @@ function* signin(action) {
         const response = yield call(loginAPI, action.payload)
         const result = response
             .data
-            console.log(" 로그인 서버다녀옴: " + JSON.stringify(result))
-        const loginUser = JSON.stringify(result)
-        localStorage.setItem("loginUser",loginUser)
-        yield put({type: LOGIN_SUCCESS, payload: result})
-        yield put({type: SAVE_TOKEN, payload: result.token})
+            if(result.token !== "FAILURE" && result.token !==null){
+                console.log(" 로그인 서버다녀옴: " + JSON.stringify(result))
+                yield put({type: LOGIN_SUCCESS, payload: result})
+                yield put({type: SAVE_TOKEN, payload: result.token})
+               
+            }else{
+                console.log(" 로그인 실패: " + JSON.stringify(result))
+            }
     } catch (error) {
         yield put({type: LOGIN_FAILURE, payload: error.message})
     }
 }
 const loginAPI = payload => axios.post(
-    `${SERVER}/user/login`,
+    `${SERVER}/users/login`,
     payload,
     {headers}
 )

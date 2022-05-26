@@ -7,7 +7,7 @@ import { round } from 'lodash';
 import { useSelector } from 'react-redux';
 
 const LoginPage = ({}) => {
-    const [user, setUser] = useState({userid: '', password: ''})
+    const [user, setUser] = useState({ username: '', password: ''})
     const dispatch = useDispatch()
     const router = useRouter()
     const onChange = e => {
